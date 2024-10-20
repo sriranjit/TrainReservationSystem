@@ -233,6 +233,7 @@ public class Booking{
                     Ticket racTicket = entry.getValue();
                     if(racTicket.getPnrStatus()==PNRStatus.RAC && td.getAvailableSeats() >= racTicket.getPassengerCount()){
                         racTicket.setPnrStatus(PNRStatus.CONFIRMED);
+                        log_transactions("RAC Ticket upgraded. PNR Number : "+entry.getKey()+", PNR Status : "+racTicket.getPnrStatus());
                         for(int i=1;i<=racTicket.getPassengerCount();i++){
                             td.lessAvailableSeats();
                         }
